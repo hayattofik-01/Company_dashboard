@@ -1,25 +1,29 @@
 import 'package:audit_web/core/layouts/responsive.dart';
+import 'package:audit_web/core/style.dart';
 import 'package:audit_web/features/locations_page/presentation/widgets/dropdown_formfield.dart';
 import 'package:flutter/material.dart';
+
 class FilterCard extends StatefulWidget {
   const FilterCard({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _FilterCardState createState() => _FilterCardState();
 }
 
 class _FilterCardState extends State<FilterCard> {
-  bool isChecked = false;
+  bool isChecked = false; // Boolean variable to track the state of the checkbox
 
   @override
   Widget build(BuildContext context) {
     return Responsive(
-      mobile: _buildColumnLayout(),
-      tablet: _buildRowLayout(), // You can customize the tablet layout if needed
-      desktop: _buildRowLayout(),
+      mobile: _buildColumnLayout(), // Use the column layout for mobile screens
+      tablet: _buildRowLayout(), // Use the row layout for tablet screens
+      desktop: _buildRowLayout(), // Use the row layout for desktop screens
     );
   }
 
+  // Builds the row layout for tablet and desktop screens
   Widget _buildRowLayout() {
     return Card(
       child: Padding(
@@ -27,14 +31,16 @@ class _FilterCardState extends State<FilterCard> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
+            // First input field: DropdownFormField for Brand
+            const Expanded(
               flex: 1,
               child: DropdownFormField(
                 hintText: 'Brand(Optional)',
-                items: const ['Option 1', 'Option 2', 'Option 3'],
+                items: ['Option 1', 'Option 2', 'Option 3'],
               ),
             ),
             const SizedBox(width: 8.0),
+            // Second input field: TextFormField for Alias
             Expanded(
               flex: 1,
               child: TextFormField(
@@ -45,32 +51,36 @@ class _FilterCardState extends State<FilterCard> {
               ),
             ),
             const SizedBox(width: 8.0),
+            // Third input field: TextFormField for Location
             Expanded(
               flex: 2,
               child: TextFormField(
-                decoration: const  InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Location',
                   border: OutlineInputBorder(),
                 ),
               ),
             ),
             const SizedBox(width: 8.0),
-            Expanded(
+            // Fourth input field: DropdownFormField for Type
+            const Expanded(
               flex: 1,
               child: DropdownFormField(
                 hintText: 'Type(Optional)',
-                items: const ['Option 1', 'Option 2', 'Option 3'],
+                items: ['Option 1', 'Option 2', 'Option 3'],
               ),
             ),
             const SizedBox(width: 8.0),
-            Expanded(
+            // Fifth input field: DropdownFormField for Market
+            const Expanded(
               flex: 1,
               child: DropdownFormField(
                 hintText: 'Market(Optional)',
-                items: const ['Option 1', 'Option 2', 'Option 3'],
+                items:  ['Option 1', 'Option 2', 'Option 3'],
               ),
             ),
             const SizedBox(width: 10),
+            // Checkbox for the "Corporate" option
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -78,21 +88,21 @@ class _FilterCardState extends State<FilterCard> {
                   'Corporate',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color:  Colors.black,
+                    color: Colors.black,
                   ),
                 ),
-                const SizedBox(width:7),
+                const SizedBox(width: 7),
                 Checkbox(
                   value: true,
-                   activeColor:  Colors.blue ,
+                  activeColor: primaryColor,
                   onChanged: (bool? value) {
                     // Handle checkbox state change
-                    
                   },
                 ),
               ],
             ),
             const SizedBox(width: 8.0),
+            // Button for creating an item
             SizedBox(
               width: 100,
               height: 50,
@@ -105,7 +115,7 @@ class _FilterCardState extends State<FilterCard> {
                 ),
                 icon: const CircleAvatar(
                   radius: 10,
-                  backgroundColor: Colors.white,
+                  backgroundColor: secondaryColor,
                   child: Icon(
                     Icons.add,
                     color: Color.fromARGB(255, 149, 211, 152),
@@ -121,6 +131,7 @@ class _FilterCardState extends State<FilterCard> {
     );
   }
 
+  // Builds the column layout for mobile screens
   Widget _buildColumnLayout() {
     return Card(
       child: Padding(
@@ -128,11 +139,13 @@ class _FilterCardState extends State<FilterCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            DropdownFormField(
+            // First input field: DropdownFormField for Brand
+            const DropdownFormField(
               hintText: 'Brand(Optional)',
-              items: const  ['Option 1', 'Option 2', 'Option 3'],
+              items:  ['Option 1', 'Option 2', 'Option 3'],
             ),
             const SizedBox(height: 8.0),
+            // Second input field: TextFormField for Alias
             TextFormField(
               decoration: const InputDecoration(
                 hintText: 'Alias',
@@ -140,6 +153,7 @@ class _FilterCardState extends State<FilterCard> {
               ),
             ),
             const SizedBox(height: 8.0),
+            // Third input field: TextFormField for Location
             TextFormField(
               decoration: const InputDecoration(
                 hintText: 'Location',
@@ -147,29 +161,33 @@ class _FilterCardState extends State<FilterCard> {
               ),
             ),
             const SizedBox(height: 8.0),
-            DropdownFormField(
+            //Fourth input field: DropdownFormField for Type
+            const DropdownFormField(
               hintText: 'Type(Optional)',
-              items: const ['Option 1', 'Option 2', 'Option 3'],
+              items:  ['Option 1', 'Option 2', 'Option 3'],
             ),
             const SizedBox(height: 8.0),
-            DropdownFormField(
+            // Fifth input field: DropdownFormField for Market
+            const DropdownFormField(
               hintText: 'Market(Optional)',
-              items: const ['Option 1', 'Option 2', 'Option 3'],
+              items:  ['Option 1', 'Option 2', 'Option 3'],
             ),
             const SizedBox(height: 10),
+            // Checkbox for the "Corporate" option
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text(
+                const Text(
                   'Corporate',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: isChecked ? Colors.blue : Colors.black,
+                    color: Colors.black,
                   ),
                 ),
-                const SizedBox(width: 5),
+                const SizedBox(width: 7),
                 Checkbox(
-                  value: isChecked,
+                  value: true,
+                  activeColor: primaryColor,
                   onChanged: (bool? value) {
                     // Handle checkbox state change
                   },
@@ -177,26 +195,24 @@ class _FilterCardState extends State<FilterCard> {
               ],
             ),
             const SizedBox(height: 8.0),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton.icon(
-                onPressed: () {
-                  // Handle create button press
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 149, 211, 152),
-                ),
-                icon: const CircleAvatar(
-                  radius: 10,
-                  backgroundColor: Colors.white,
-                  child: Icon(
-                    Icons.add,
-                    color:  Color.fromARGB(255, 149, 211, 152),
-                    size: 10,
-                  ),
-                ),
-                label: const Text('Create'),
+            // Button for creating an item
+            ElevatedButton.icon(
+              onPressed: () {
+                // Handle create button press
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 149, 211, 152),
               ),
+              icon: const CircleAvatar(
+                radius: 10,
+                backgroundColor: secondaryColor,
+                child: Icon(
+                  Icons.add,
+                  color: Color.fromARGB(255, 149, 211, 152),
+                  size: 20,
+                ),
+              ),
+              label: const Text('Create'),
             ),
           ],
         ),
@@ -204,4 +220,3 @@ class _FilterCardState extends State<FilterCard> {
     );
   }
 }
-

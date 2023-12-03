@@ -12,11 +12,13 @@ class Responsive extends StatelessWidget {
     required this.desktop,
   }) : super(key: key);
 
+  // Checks if the screen size is considered as mobile
   static bool isMobile(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
     return screenSize.width < 850 || screenSize.height < 600;
   }
 
+  // Checks if the screen size is considered as tablet
   static bool isTablet(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
     return screenSize.width < 1100 &&
@@ -24,6 +26,7 @@ class Responsive extends StatelessWidget {
         screenSize.height >= 600;
   }
 
+  // Checks if the screen size is considered as desktop
   static bool isDesktop(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
     return screenSize.width >= 1100 && screenSize.height >= 600;
@@ -31,6 +34,7 @@ class Responsive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Determines the appropriate layout based on the screen size
     if (isDesktop(context)) {
       return desktop;
     } else if (isTablet(context) && tablet != null) {

@@ -23,6 +23,7 @@ class _SideMenuState extends State<SideMenu> {
         children: [
           Row(
             children: [
+              // Menu icon button
               Container(
                 height: kToolbarHeight, // Set the height to match the app bar
                 color: Colors.lightBlue, 
@@ -36,6 +37,7 @@ class _SideMenuState extends State<SideMenu> {
                   ),
                 ),
               ),
+              // Configuration title
               Container(
                 width: screenWidth * 0.116, // Adjust the width based on screen width
                 height: kToolbarHeight, // Set the height to match the app bar
@@ -65,6 +67,7 @@ class _SideMenuState extends State<SideMenu> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        // Menu item
                         ListTile(
                           title: Text(
                             menuItems[index],
@@ -86,12 +89,14 @@ class _SideMenuState extends State<SideMenu> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                // Submenu 1
                                 ListTile(
                                   title: const  Text("Roles"),
                                   onTap: () {
                                     // Handle submenu 1 tap
                                   },
                                 ),
+                                // Submenu 2
                                 ListTile(
                                   title: const Text("Users"),
                                   onTap: () {
