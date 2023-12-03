@@ -1,5 +1,6 @@
 import 'package:audit_web/core/layouts/header.dart';
 import 'package:audit_web/core/layouts/responsive.dart';
+import 'package:audit_web/core/style.dart';
 import 'package:flutter/material.dart';
 
 import 'side_menu.dart';
@@ -11,8 +12,11 @@ class PageLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bgColor,
 
-      drawer: SideMenu(),
+      // Side menu that appears in the drawer
+      drawer: const SideMenu(),
+
       body: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +34,9 @@ class PageLayout extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Header(),
+                    // Header bar
+                    const Header(),
+                    // Content of the page
                     child,
                   ],
                 ),

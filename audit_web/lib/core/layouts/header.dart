@@ -25,8 +25,8 @@ class Header extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  "user@example.com",
+                const Text(
+                  "pizzafactory@meazureupsupport.com",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 16,
@@ -36,15 +36,15 @@ class Header extends StatelessWidget {
                   onPressed: () {},
                   icon: const Icon(Icons.arrow_drop_down),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10, right: 10),
+                const Padding(
+                  padding: EdgeInsets.only(left: 10, right: 10),
                   child: VerticalDivider(
                     color: Colors.grey,
                     width: 1.0,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: Icon(
                     Icons.help_outline,
                     color: Colors.blue,
@@ -65,8 +65,8 @@ class Header extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        "user@example.com",
+                      const Text(
+                        "pizzafactory@meazureupsupport.com",
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -76,15 +76,15 @@ class Header extends StatelessWidget {
                         onPressed: () {},
                         icon: const Icon(Icons.arrow_drop_down),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 10, right: 10),
                         child: VerticalDivider(
                           color: Colors.grey,
                           width: 1.0,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
                         child: Icon(
                           Icons.help_outline,
                           color: Colors.blue,
@@ -101,6 +101,7 @@ class Header extends StatelessWidget {
     );
   }
 
+  // Builds the header bar with the given list of children
   Widget _buildHeader({required List<Widget> children}) {
     return Container(
       height: kToolbarHeight,
