@@ -1,7 +1,6 @@
 import 'package:audit_web/core/layouts/header.dart';
 import 'package:audit_web/core/layouts/responsive.dart';
 import 'package:audit_web/core/style.dart';
-import 'package:flutter/material.dart';
 
 import 'side_menu.dart';
 
@@ -16,7 +15,6 @@ class PageLayout extends StatelessWidget {
 
       // Side menu that appears in the drawer
       drawer: const SideMenu(),
-
       body: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
