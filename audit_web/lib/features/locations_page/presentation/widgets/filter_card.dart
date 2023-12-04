@@ -7,79 +7,91 @@ class FilterCard extends StatefulWidget {
   const FilterCard({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _FilterCardState createState() => _FilterCardState();
 }
 
 class _FilterCardState extends State<FilterCard> {
   bool isChecked = false; // Boolean variable to track the state of the checkbox
-
+ 
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
+    double textSize = MediaQuery.of(context).textScaleFactor;
     return Responsive(
       mobile: _buildColumnLayout(), // Use the column layout for mobile screens
-      tablet: _buildRowLayout(), // Use the row layout for tablet screens
-      desktop: _buildRowLayout(), // Use the row layout for desktop screens
+      tablet: _buildRowLayout(deviceWidth,deviceHeight, textSize), // Use the row layout for tablet screens
+      desktop: _buildRowLayout(deviceWidth,deviceHeight, textSize), // Use the row layout for desktop screens
     );
   }
 
   // Builds the row layout for tablet and desktop screens
-  Widget _buildRowLayout() {
+  Widget _buildRowLayout(double width,double height,double ?text) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             // First input field: DropdownFormField for Brand
-            const Expanded(
+            Expanded(
               flex: 1,
-              child: DropdownFormField(
-                hintText: 'Brand(Optional)',
-                items: ['Option 1', 'Option 2', 'Option 3'],
+              child: Padding(
+                padding:  EdgeInsets.only(right: width * 0.003),
+                child: DropdownFormField(
+                  hintText: 'Brand(Optional)',
+                  items: ['Option 1', 'Option 2', 'Option 3'],
+                ),
               ),
             ),
-            const SizedBox(width: 8.0),
             // Second input field: TextFormField for Alias
             Expanded(
               flex: 1,
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  hintText: 'Alias',
-                  border: OutlineInputBorder(),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: width *  0.003),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: 'Alias',
+                    border: OutlineInputBorder(),
+                  ),
                 ),
               ),
             ),
-            const SizedBox(width: 8.0),
             // Third input field: TextFormField for Location
             Expanded(
               flex: 2,
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  hintText: 'Location',
-                  border: OutlineInputBorder(),
+              child: Padding(
+                padding:  EdgeInsets.symmetric(horizontal: width *  0.003),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: 'Location',
+                    border: OutlineInputBorder(),
+                  ),
                 ),
               ),
             ),
-            const SizedBox(width: 8.0),
             // Fourth input field: DropdownFormField for Type
-            const Expanded(
+            Expanded(
               flex: 1,
-              child: DropdownFormField(
-                hintText: 'Type(Optional)',
-                items: ['Option 1', 'Option 2', 'Option 3'],
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: width *  0.003),
+                child: DropdownFormField(
+                  hintText: 'Type(Optional)',
+                  items: ['Option 1', 'Option 2', 'Option 3'],
+                ),
               ),
             ),
-            const SizedBox(width: 8.0),
             // Fifth input field: DropdownFormField for Market
-            const Expanded(
+            Expanded(
               flex: 1,
-              child: DropdownFormField(
-                hintText: 'Market(Optional)',
-                items:  ['Option 1', 'Option 2', 'Option 3'],
+              child: Padding(
+                padding:  EdgeInsets.symmetric(horizontal: width *  0.003),
+                child: DropdownFormField(
+                  hintText: 'Market(Optional)',
+                  items: ['Option 1', 'Option 2', 'Option 3'],
+                ),
               ),
             ),
-            const SizedBox(width: 10),
             // Checkbox for the "Corporate" option
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -91,7 +103,7 @@ class _FilterCardState extends State<FilterCard> {
                     color: Colors.black,
                   ),
                 ),
-                const SizedBox(width: 7),
+                 SizedBox(width:width * 0.009),
                 Checkbox(
                   value: true,
                   activeColor: primaryColor,
@@ -101,11 +113,9 @@ class _FilterCardState extends State<FilterCard> {
                 ),
               ],
             ),
-            const SizedBox(width: 8.0),
             // Button for creating an item
             SizedBox(
-              width: 100,
-              height: 50,
+              
               child: ElevatedButton.icon(
                 onPressed: () {
                   // Handle create button press
@@ -113,13 +123,13 @@ class _FilterCardState extends State<FilterCard> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 149, 211, 152),
                 ),
-                icon: const CircleAvatar(
-                  radius: 10,
+                icon: CircleAvatar(
+                  radius:width *  0.005,
                   backgroundColor: secondaryColor,
                   child: Icon(
                     Icons.add,
                     color: Color.fromARGB(255, 149, 211, 152),
-                    size: 20,
+                    size: height * 0.02,
                   ),
                 ),
                 label: const Text('Create'),
@@ -140,9 +150,9 @@ class _FilterCardState extends State<FilterCard> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // First input field: DropdownFormField for Brand
-            const DropdownFormField(
+            DropdownFormField(
               hintText: 'Brand(Optional)',
-              items:  ['Option 1', 'Option 2', 'Option 3'],
+              items: ['Option 1', 'Option 2', 'Option 3'],
             ),
             const SizedBox(height: 8.0),
             // Second input field: TextFormField for Alias
@@ -161,21 +171,21 @@ class _FilterCardState extends State<FilterCard> {
               ),
             ),
             const SizedBox(height: 8.0),
-            //Fourth input field: DropdownFormField for Type
-            const DropdownFormField(
+            // Fourth input field: DropdownFormField for Type
+            DropdownFormField(
               hintText: 'Type(Optional)',
-              items:  ['Option 1', 'Option 2', 'Option 3'],
+              items: ['Option 1', 'Option 2', 'Option 3'],
             ),
             const SizedBox(height: 8.0),
             // Fifth input field: DropdownFormField for Market
-            const DropdownFormField(
+            DropdownFormField(
               hintText: 'Market(Optional)',
-              items:  ['Option 1', 'Option 2', 'Option 3'],
+              items: ['Option 1', 'Option 2', 'Option 3'],
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 8.0),
             // Checkbox for the "Corporate" option
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
                   'Corporate',
@@ -184,12 +194,13 @@ class _FilterCardState extends State<FilterCard> {
                     color: Colors.black,
                   ),
                 ),
-                const SizedBox(width: 7),
                 Checkbox(
-                  value: true,
+                  value: isChecked,
                   activeColor: primaryColor,
                   onChanged: (bool? value) {
-                    // Handle checkbox state change
+                    setState(() {
+                      isChecked = value ?? false;
+                    });
                   },
                 ),
               ],
